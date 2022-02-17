@@ -12,7 +12,8 @@ public class RampController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();    
+        Rigidbody rigidbody1 = GetComponent<Rigidbody>();
+        rb = rigidbody1;    
     }
 
     // When WASD are hit
