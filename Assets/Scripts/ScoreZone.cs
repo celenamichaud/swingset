@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreZone : MonoBehaviour
 {
-    private bool goal = true;
+    // private bool goal = true;
 
     // public bool Goal { get => goal; set => goal = value; }
 
@@ -20,16 +20,16 @@ public class ScoreZone : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (goal) {
-            Debug.Log("A goal was scored!");
-            // other.transform.position // move ball back to starting position
-            goal = false;
-        } else
-        {
-            Debug.Log("This goal was already counted.");
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (goal) {
+    //        Debug.Log("A goal was scored!");
+    //        // other.transform.position // move ball back to starting position
+    //        goal = false;
+    //    } else
+    //    {
+    //        Debug.Log("This goal was already counted.");
+    //    }
+    //}
 
 }
