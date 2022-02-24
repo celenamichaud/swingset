@@ -7,7 +7,7 @@ public class Ball : MonoBehaviour
     public Rigidbody rb;
     public Vector3 spawnPos;
     public Quaternion spawnRot;
-    private bool goal = false;
+    public bool Goal { get; set; } = false;
 
     private void Awake()
     {
@@ -18,30 +18,32 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Goal = false;
         rb.maxAngularVelocity = Mathf.Infinity; // Ball can roll as fast as possible
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(goalScored());
+
     }
 
-    IEnumerator goalScored()
-    {
-        if(goal)
-        {
-            Debug.Log("Goal is scored!");
-        }
-        yield return new WaitForSeconds(5);
-        Debug.Log("Return ball to start...");
-    }
+    //IEnumerator goalScored()
+    //{
+    //    if(goal)
+    //    {
+    //        Debug.Log("Goal is scored!");
+    //    }
+    //    yield return new WaitForSeconds(5);
+    //    Debug.Log("Return ball to start...");
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("ScoreZone"))
         {
-            goal = true;
+            Goal = true;
+            Debug.Log("Goooooooooooooooooooal");
         }
     }
 }
