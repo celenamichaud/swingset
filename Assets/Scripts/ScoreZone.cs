@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ScoreZone : MonoBehaviour
 {
+    public GameManager manager;
+    private bool goalScored = false;
     // private bool goal = true;
 
     // public bool Goal { get => goal; set => goal = value; }
@@ -20,16 +22,23 @@ public class ScoreZone : MonoBehaviour
 
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (goal) {
-    //        Debug.Log("A goal was scored!");
-    //        // other.transform.position // move ball back to starting position
-    //        goal = false;
-    //    } else
-    //    {
-    //        Debug.Log("This goal was already counted.");
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        Rigidbody rb = other.attachedRigidbody;
+        if(rb == null) { return; }
+        Ball b = rb.GetComponent<Ball>();
+        if(b == null) { return; }
+        if (!goalScored)
+        {
+            goalScored = true;
+            manager.goalScored(this,b);
+        }
+    }
+
+
+    public void resetGoal()
+    {
+        goalScored = false;
+    }
 
 }
