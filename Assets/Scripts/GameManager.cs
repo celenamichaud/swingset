@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public Transform startLocation;
     public Ball ballPrefab;
     int _numGoals;
+    public bool gameStarted;
+
     public int NumGoals // Goals scored in one game
     {
         get { return _numGoals; }
@@ -25,6 +27,17 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void StartGame()
+    {
+        StartCoroutine(Gameplay());
+    }
+
+    IEnumerator Gameplay()
+    {
+        gameStarted = true;
+        yield return null;
     }
 
     // Called by ScoreZone trigger entry to initiate goal scoring sequence
