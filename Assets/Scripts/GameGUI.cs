@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameGUI : MonoBehaviour
 {
@@ -22,9 +23,27 @@ public class GameGUI : MonoBehaviour
         }  
     }
 
-    IEnumerator StartGame()
+    public void HandlePlayButton()
+    {
+        StartCoroutine(PlayGame(3));
+    }
+
+    IEnumerator PlayGame(float delay)
     {
         startButton.interactable = false;
-        yield return new WaitForSeconds(1);
+
+        Text buttonText = startButton.GetComponentInChildren<Text>();
+
+        while(delay > 0)
+        {
+            buttonText.text = "" + delay;
+            delay -= 1;
+            yield return new WaitForSeconds(delay);
+        }
+
+        manager.StartGame();
+        menuPanel.SetActive(false);
+        startButton.interactable = true; 
+        buttonText.text = "PLAY";
     }
 }

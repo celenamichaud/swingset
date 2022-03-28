@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Gameplay()
     {
         gameStarted = true;
+        Debug.Log("Game started!");
         yield return null;
     }
 
@@ -44,6 +45,8 @@ public class GameManager : MonoBehaviour
     public void GoalScored(ScoreZone zone, Ball b)
     {
         StartCoroutine(RespawnBallIn(3.0f, b, zone));
+        NumGoals++;
+        Debug.Log("Goals: " + NumGoals);
     }
 
     // Respawn ball in start position after X number of seconds 
