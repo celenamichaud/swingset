@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     {
         NumGoals = 0;
         // Spawn the ball at the start of the game
-        ball = Instantiate<Ball>(ballPrefab, startLocation.position, startLocation.rotation);
+        // ball = Instantiate<Ball>(ballPrefab, startLocation.position, startLocation.rotation);
     }
 
     // Update is called once per frame
@@ -38,13 +38,14 @@ public class GameManager : MonoBehaviour
     {
         gameStarted = true;
         Debug.Log("Game started!");
+        ball = Instantiate<Ball>(ballPrefab, startLocation.position, startLocation.rotation);
         yield return null;
     }
 
     // Called by ScoreZone trigger entry to initiate goal scoring sequence
     public void GoalScored(ScoreZone zone, Ball b)
     {
-        StartCoroutine(RespawnBallIn(3.0f, b, zone));
+        StartCoroutine(RespawnBallIn(3.0f, b, zone)); // move this code to live GUI
         NumGoals++;
         Debug.Log("Goals: " + NumGoals);
     }
