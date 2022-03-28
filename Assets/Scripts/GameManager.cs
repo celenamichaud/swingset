@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Ball ballPrefab;
     int _numGoals;
     public bool gameStarted;
+    public PlayerGUI playerGUI;
 
     public int NumGoals // Goals scored in one game
     {
@@ -37,8 +38,9 @@ public class GameManager : MonoBehaviour
     IEnumerator Gameplay()
     {
         gameStarted = true;
-        Debug.Log("Game started!");
+        
         ball = Instantiate<Ball>(ballPrefab, startLocation.position, startLocation.rotation);
+        
         yield return null;
     }
 
@@ -47,7 +49,8 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(RespawnBallIn(3.0f, b, zone)); // move this code to live GUI
         NumGoals++;
-        Debug.Log("Goals: " + NumGoals);
+        playerGUI.UpdateGoals(NumGoals);
+
     }
 
     // Respawn ball in start position after X number of seconds 

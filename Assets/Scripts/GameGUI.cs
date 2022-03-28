@@ -38,7 +38,7 @@ public class GameGUI : MonoBehaviour
         {
             buttonText.text = "" + delay;
             delay -= 1;
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(1);
         }
 
         manager.StartGame();
