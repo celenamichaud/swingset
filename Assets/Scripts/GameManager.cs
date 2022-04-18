@@ -44,6 +44,14 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
+    public void StopGame()
+    {
+        // call this function from PlayerGUI to stop gameplay
+        gameStarted = false;
+        _numGoals = 0;
+
+    }
+
     // Called by ScoreZone trigger entry to initiate goal scoring sequence
     public void GoalScored(ScoreZone zone, Ball b)
     {

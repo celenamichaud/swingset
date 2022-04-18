@@ -7,19 +7,25 @@ public class PlayerGUI : MonoBehaviour
 {
     public GameManager manager;
     public GameObject hudPanel;
+    public Button stopButton;
+    public Text goalsDisplay;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Text buttonText = stopButton.GetComponentInChildren<Text>();
+        buttonText.text = "STOP";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (manager.gameStarted)
+        if (!manager.gameStarted)
         {
-            hudPanel.SetActive(true); // hide HUD until game starts
+            hudPanel.SetActive(false); // hide HUD until game starts
+        } else
+        {
+            hudPanel.SetActive(true);
         }
 
         //TODO: add end game button
@@ -27,16 +33,22 @@ public class PlayerGUI : MonoBehaviour
 
     public void UpdateGoals(int numGoals)
     {
-        StartCoroutine(IncreaseGoals(numGoals));
-    }
-
-    IEnumerator IncreaseGoals(int numGoals)
-    {
         Text buttonText = hudPanel.GetComponentInChildren<Text>();
 
         buttonText.text = "Goals: " + numGoals;
 
-        yield return null;
+    }
+
+    public void HandleStopButton()
+    {
+        // stop game in GameManager?
+        // display player stats
+        // considering hiding button then displaying text of stats, or separate panel?
+        stopButton.interactable = false;
+
+        stopButton.GetComponentInChildren<Text>().text = "STOPPED";
+
+        // what next? restart game?
     }
 
 }
