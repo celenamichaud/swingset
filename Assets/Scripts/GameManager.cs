@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     int _numGoals;
     public bool gameStarted;
     public PlayerGUI playerGUI;
+    // array
 
     public int NumGoals // Goals scored in one game
     {
@@ -47,9 +49,7 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         // call this function from PlayerGUI to stop gameplay
-        gameStarted = false;
-        _numGoals = 0;
-
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scenes/Loading");
     }
 
     // Called by ScoreZone trigger entry to initiate goal scoring sequence
@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(RespawnBallIn(3.0f, b, zone)); // move this code to live GUI
         NumGoals++;
         playerGUI.UpdateGoals(NumGoals);
-
     }
 
     // Respawn ball in start position after X number of seconds 

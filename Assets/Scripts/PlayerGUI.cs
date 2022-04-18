@@ -13,8 +13,8 @@ public class PlayerGUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Text buttonText = stopButton.GetComponentInChildren<Text>();
-        buttonText.text = "STOP";
+        Text stopButtonText = stopButton.GetComponentInChildren<Text>();
+        stopButtonText.text = "STOP";
     }
 
     // Update is called once per frame
@@ -33,10 +33,7 @@ public class PlayerGUI : MonoBehaviour
 
     public void UpdateGoals(int numGoals)
     {
-        Text buttonText = hudPanel.GetComponentInChildren<Text>();
-
-        buttonText.text = "Goals: " + numGoals;
-
+        goalsDisplay.text = "Goals: " + numGoals;
     }
 
     public void HandleStopButton()

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameGUI : MonoBehaviour
 {
     public GameManager manager;
-    public GameObject menuPanel;
+    public GameObject startPanel;
     public Button startButton;
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class GameGUI : MonoBehaviour
     {
         if(!manager.gameStarted)
         {
-            menuPanel.SetActive(true);
+            startPanel.SetActive(true);
         }  
     }
 
@@ -42,7 +42,7 @@ public class GameGUI : MonoBehaviour
         }
 
         manager.StartGame();
-        menuPanel.SetActive(false);
+        startPanel.SetActive(false);
         startButton.interactable = true; 
         buttonText.text = "PLAY";
     }
