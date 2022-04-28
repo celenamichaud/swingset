@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     int _numGoals;
     public bool gameStarted;
     public PlayerGUI playerGUI;
-    // array
+    private MainManager Instance;
 
     public int NumGoals // Goals scored in one game
     {
@@ -49,13 +49,16 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         // call this function from PlayerGUI to stop gameplay
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scenes/Loading");
+        // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scenes/Loading");
+        // how to handle indexing? create another variable of index in Instance, let it update to
+        // start the game?
+        Instance.gameScores[0] = NumGoals;
     }
 
     // Called by ScoreZone trigger entry to initiate goal scoring sequence
     public void GoalScored(ScoreZone zone, Ball b)
     {
-        StartCoroutine(RespawnBallIn(3.0f, b, zone)); // move this code to live GUI
+        StartCoroutine(RespawnBallIn(3.0f, b, zone));
         NumGoals++;
         playerGUI.UpdateGoals(NumGoals);
     }

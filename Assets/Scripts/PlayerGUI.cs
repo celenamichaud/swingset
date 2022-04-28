@@ -46,6 +46,8 @@ public class PlayerGUI : MonoBehaviour
         stopButton.GetComponentInChildren<Text>().text = "STOPPED";
 
         // what next? restart game?
+
+        // 4/27 - try loading main scene from here
     }
 
 }
